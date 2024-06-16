@@ -1,4 +1,4 @@
-FROM huggingface/transformers-inference:4.24.0-pt1.13-cuda11.6
+FROM pytorch/pytorch:2.0.1-cuda11.7-cudnn8-runtime
 
 #set up environment
 RUN apt-get update \
@@ -7,7 +7,7 @@ RUN apt-get update \
 
 WORKDIR /home
 
-COPY ./requirements.txt .
+COPY ./requirfixements.txt .
 
 RUN pip3 install --no-cache-dir -r requirements.txt
 
