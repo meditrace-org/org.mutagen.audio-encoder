@@ -44,7 +44,7 @@ class RabbitMQSettings(BaseModel):
     video_queue: str = 'video_emb'
     audio_chunks_queue: str = "audio_chunks"
 
-    prefetch_count: PositiveInt = 3
+    prefetch_count: PositiveInt = 10
 
 
 class Settings(BaseSettings):
