@@ -55,15 +55,17 @@ def listen(channel: BlockingChannel, method: Basic.Deliver,
     for segment in segments:
         text += segment.text
 
-    text_en = opus(text)[0]["translation_text"]
+    if len(text) < 10:
+        channel.basic_ack(delivery_tag=method.delivery_tag)
+        return
 
+    text_en = opus(text)[0]["translation_text"]
     emb = clip.encode_text(text_en).astype(np.float16)
     print(text)
     monitoring.processing_duration_seconds.labels('inference') \
         .observe(monitoring.timer.get('inference'))
     monitoring.timer.start('publishing')
 
-    #print(emb.tolist())
     send = {
         "uuid": id,
         "model": settings.encoder.voice_encoder,
