@@ -19,10 +19,4 @@ services:
               count: 1
               capabilities: [ gpu ]
 
-  prometheus:
-    image: prom/prometheus
-    ports:
-      - "9090:9090"
-    volumes:
-      - ${PWD}/prometheus.yml:/etc/prometheus/prometheus.yml
 

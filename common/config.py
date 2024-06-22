@@ -38,13 +38,13 @@ class RabbitMQSettings(BaseModel):
     username: str = 'processing'
     password: str = '!U%wWa8L)9kJeJ&'
 
-    queue: str = 'video_chunks'
+    queue: str = 'video_chunks_2'
     audio_queue: str = 'audio_emb'
     face_queue: str = 'face_emb'
     video_queue: str = 'video_emb'
     audio_chunks_queue: str = "audio_chunks"
 
-    prefetch_count: PositiveInt = 10
+    prefetch_count: PositiveInt = 3
 
 
 class Settings(BaseSettings):
